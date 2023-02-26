@@ -36,6 +36,17 @@
                         <div class="clearfix"></div>
                         <hr>
                         <div class="float-left">
+                            <label for="cacheSystem" class="main-label">Cache System</label>
+                            <br><small class="admin-info">By enabling Cache System, speed up your website up to 80%! <br>Note: Folder cache and all its subfolder permission should be set to 777.</small>
+                        </div>
+                        <div class="form-group float-right switcher">
+                            <input type="hidden" name="cacheSystem" value="0" />
+                            <input type="checkbox" name="cacheSystem" id="chck-cacheSystem" value="1" <?php echo ($wo['config']['cacheSystem'] == 1) ? 'checked': '';?>>
+                            <label for="chck-cacheSystem" class="check-trail"><span class="check-handler"></span></label>
+                        </div>
+                        <div class="clearfix"></div>
+                        <hr>
+                        <div class="float-left">
                             <label for="maintenance_mode" class="main-label">Maintenance Mode</label>
                             <br><small class="admin-info">Turn the whole site under Maintenance. <br> You can get the site back by visiting /admincp or /admin-cp</small>
                         </div>

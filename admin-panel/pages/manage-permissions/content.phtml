@@ -23,6 +23,7 @@ if (!empty($wo['all_pages'])) {
 if (empty($user_data['permission'])) {
     $permission = json_encode($per_array);
     $db->where('user_id',$user_data['user_id'])->update(T_USERS,array('permission' => $permission));
+    cache($user_data['user_id'], 'users', 'delete');
     $user_data = Wo_UserData($user_data['user_id']);
     $user_data['permission'] = json_decode($user_data['permission'],true);
 }
@@ -35,6 +36,7 @@ else{
     }
     $permission = json_encode($user_data['permission']);
     $db->where('user_id',$user_data['user_id'])->update(T_USERS,array('permission' => $permission));
+    cache($user_data['user_id'], 'users', 'delete');
     $user_data = Wo_UserData($user_data['user_id']);
     $user_data['permission'] = json_decode($user_data['permission'],true);
 }

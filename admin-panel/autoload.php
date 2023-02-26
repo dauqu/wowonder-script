@@ -145,6 +145,8 @@ if ($is_moderoter && !empty($wo['user']['permission'])) {
         $wo['user']['permission'][$page] = 0;
         $permission = json_encode($wo['user']['permission']);
         $db->where('user_id',$wo['user']['user_id'])->update(T_USERS,array('permission' => $permission));
+        
+            cache($wo['user']['id'], 'users', 'delete');
         header("Location: " . Wo_LoadAdminLinkSettings($page));
         exit();
     }
@@ -173,6 +175,7 @@ elseif ($is_moderoter && empty($wo['user']['permission'])) {
     }
     $permission = json_encode($permission);
     $db->where('user_id',$wo['user']['user_id'])->update(T_USERS,array('permission' => $permission));
+    cache($wo['user']['id'], 'users', 'delete');
     $wo['user'] = Wo_UserData($wo['user']['user_id']);
 }
 
